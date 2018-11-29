@@ -13,11 +13,13 @@ a{
 ul,ol{
     list-style: none;
 }
+input{font: inherit}
 body{
     font-size: 14px;
     line-height: 1.5;
 
 }
+
 
 /*layout*/
 
@@ -28,6 +30,7 @@ body{
 
 .page > aside{
     width: 200px;
+
 
 
 
@@ -93,3 +96,63 @@ body{
     border: 3px dashed grey;
 
 }
+
+/*main*/
+
+.form{
+    font-size: 16px;
+
+
+
+}
+
+.form > .row{
+    margin: 10px 0;
+    display: flex;
+}
+
+
+
+.form > .row > label{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 5em;
+    text-align: right;
+    margin-right: 5px;
+}
+
+.form > .row.actions{
+    margin-left: calc(5em + 149px);
+}
+
+.form input[type=text]{
+    padding: 3px 8px;
+    border-radiust: 5px;
+    border: 2px #ddd solid;
+    height: 30px;
+}
+.form input[type=button],
+.form input[type=submit],
+.form button{
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+}
+
+.page > main{
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
+    padding-top: 50px;
+    background: #d4d4d4;
+    padding-left: 20px;
+
+}
+
+.page >main > .form{
+
+}
+
