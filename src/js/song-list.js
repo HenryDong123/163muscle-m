@@ -81,6 +81,23 @@
             })
 
 
+
+            window.eventHub.on('update',(Music)=>{
+
+                let music = this.model.data.music
+
+
+                for (let i = 0; i <music.length ; i++) {
+                    if (music[i].id === Music.id){
+                        Object.assign(music[i],Music)
+                    }
+
+                }
+                this.view.render(this.model.data)
+
+            })
+
+
         },
         bindEvents() {
             $(this.view.el).on('click', 'li', (e) => {
