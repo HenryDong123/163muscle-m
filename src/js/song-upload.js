@@ -67,7 +67,7 @@
                         var response = JSON.parse(info.response);
                         var sourceLink = 'http://' + domain + '/' + encodeURIComponent(response.key); //获取上传成功后的文件的Url
                         // uploadStatus.textContent = '上传完毕!' + '' + sourceLink + response.key
-                        window.eventHub.emit('upload', {
+                        window.eventHub.emit('new', {
                             name: response.key,
                             url: sourceLink
                         })

@@ -54,9 +54,9 @@
             this.view = view
             this.model = model
             this.view.render(this.model.data)
-            this.getALlMusic()
             this.bindEvents()
             this.bindEventHub()
+            this.getALlMusic()
 
 
         },
@@ -68,12 +68,16 @@
         },
 
         bindEventHub() {
-            window.eventHub.on('upload', () => {
-                this.view.clearActive()
-            })
+
             window.eventHub.on('create', (musicData) => {
                 this.model.data.music.push(musicData)
                 this.view.render(this.model.data)
+            })
+
+
+            window.eventHub.on('new', () => {
+                this.view.clearActive()
+
             })
 
 
