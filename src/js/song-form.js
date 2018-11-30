@@ -146,7 +146,7 @@
 
             this.model.update(data)
                 .then(() => {
-                    alert('chenggong')
+                    
                     window.eventHub.emit('update', JSON.parse(JSON.stringify(this.model.data)))
                 })
 

@@ -9,8 +9,17 @@
         render(data) {
             let $el = $(this.el)
             $el.html(this.template)
-            let {music} = data
-            let liList = music.map((music) => $('<li></li>').text(music.name).attr('music-id', music.id))
+            let {music, selectMusicId} = data
+            let liList = music.map((music) => {
+                let $li = $('<li></li>').text(music.name).attr('music-id', music.id)
+                if (music.id === selectMusicId){
+                    $li.addClass('active')
+
+                }
+
+                return $li
+
+            })
 
             $el.find('ul').empty()
             liList.map((domLi) => {
@@ -19,11 +28,6 @@
 
         },
 
-        activeItem(li) {
-            let $li = $(li)
-            $li.addClass('active')
-                .siblings('.active').removeClass('active')
-        },
 
         clearActive() {
             $(this.el).find('.active').removeClass('active')
@@ -33,7 +37,8 @@
 
     let model = {
         data: {
-            music: []
+            music: [],
+            selectMusicId: null,
 
         },
         find() {
@@ -81,15 +86,14 @@
             })
 
 
-
-            window.eventHub.on('update',(Music)=>{
+            window.eventHub.on('update', (Music) => {
 
                 let music = this.model.data.music
 
 
-                for (let i = 0; i <music.length ; i++) {
-                    if (music[i].id === Music.id){
-                        Object.assign(music[i],Music)
+                for (let i = 0; i < music.length; i++) {
+                    if (music[i].id === Music.id) {
+                        Object.assign(music[i], Music)
                     }
 
                 }
@@ -101,8 +105,12 @@
         },
         bindEvents() {
             $(this.view.el).on('click', 'li', (e) => {
-                this.view.activeItem(e.currentTarget)
+
                 let musicId = e.currentTarget.getAttribute('music-id')
+
+                this.model.data.selectMusicId = musicId
+                this.view.render(this.model.data)
+
                 let data
                 let music = this.model.data.music
                 for (let i = 0; i < music.length; i++) {
