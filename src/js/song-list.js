@@ -10,7 +10,7 @@
             let $el = $(this.el)
             $el.html(this.template)
             let {music} = data
-            let liList = music.map((music) => $('<li></li>').text(music.name))
+            let liList = music.map((music) => $('<li></li>').text(music.name).attr('music-id', music.id))
 
             $el.find('ul').empty()
             liList.map((domLi) => {
@@ -18,6 +18,13 @@
             })
 
         },
+
+        activeItem(li) {
+            let $li = $(li)
+            $li.addClass('active')
+                .siblings('.active').removeClass('active')
+        },
+
         clearActive() {
             $(this.el).find('.active').removeClass('active')
         }
@@ -47,6 +54,20 @@
             this.view = view
             this.model = model
             this.view.render(this.model.data)
+            this.getALlMusic()
+            this.bindEvents()
+            this.bindEventHub()
+
+
+        },
+
+        getALlMusic() {
+            return this.model.find().then(() => {
+                this.view.render(this.model.data)
+            })
+        },
+
+        bindEventHub() {
             window.eventHub.on('upload', () => {
                 this.view.clearActive()
             })
@@ -54,10 +75,30 @@
                 this.model.data.music.push(musicData)
                 this.view.render(this.model.data)
             })
-            this.model.find().then(() => {
-                this.view.render(this.model.data)
-            })
 
+
+        },
+        bindEvents() {
+            $(this.view.el).on('click', 'li', (e) => {
+                this.view.activeItem(e.currentTarget)
+                let musicId = e.currentTarget.getAttribute('music-id')
+                let data
+                let music = this.model.data.music
+                for (let i = 0; i < music.length; i++) {
+
+                    if (music[i].id === musicId) {
+                        data = music[i]
+                        break
+                    }
+
+                }
+
+                let copy = JSON.stringify(data)
+                let newData = JSON.parse(copy)
+                window.eventHub.emit('select', newData)
+                //防止改动内存后造成的bug，使用深拷贝
+
+            })
 
         }
 

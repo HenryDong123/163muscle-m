@@ -17,15 +17,33 @@ input{font: inherit}
 body{
     font-size: 14px;
     line-height: 1.5;
+    background: #8B98A6;
 
 }
 
 
 /*layout*/
+.page-wrapper{
+    height: 100vh;
+    border: red solid 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+
+
+
+}
 
 .page{
     display: flex;
-    height: 100vh;
+    width: 1106px;
+    height: 641px;
+    border: 9px black solid;
+    border-radius: 10px;
+    box-shadow: 0px 35px 48px -7px rgba(0,0,0,0.73);
+
 }
 
 .page > aside{
@@ -34,9 +52,14 @@ body{
 
 
 
+
+
+
 }
 
 .page > main{
+
+
     flex-grow: 1;
 
 

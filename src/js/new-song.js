@@ -21,11 +21,17 @@
             window.eventHub.on('upload',(data) =>{
                 this.active()
             })
+            window.eventHub.on('select',(data) =>{
+                this.deactive()
+            })
 
 
         },
         active(){
             $(this.view.el).addClass('active')
+        },
+        deactive(){
+            $(this.view.el).removeClass('active')
         }
 
     }
