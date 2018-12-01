@@ -21,14 +21,26 @@ body{
 
 }
 
-
-/*layout*/
-.page-wrapper{
+body{
     height: 100vh;
     border: red solid 2px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+
+
+
+
+/*layout*/
+.page-wrapper{
+    width: 1106px;
+    height: 641px;
+    border-radius: 15px;
+    background: url("../img/3.jpg")fixed 0 center;
+
+    background-size:cover;
 
 
 
@@ -40,58 +52,124 @@ body{
     display: flex;
     width: 1106px;
     height: 641px;
-    border: 9px black solid;
-    border-radius: 10px;
+    border: 9px #110D16 solid;
+    border-radius: 15px;
     box-shadow: 0px 35px 48px -7px rgba(0,0,0,0.73);
+    flex-direction: column;
+    background: rgba(0,0,0,0.24);
 
 }
 
-.page > aside{
-    width: 200px;
-
-
-
-
+.main-aside-wrapper{
+    display: flex;
 
 
 
 }
 
-.page > main{
-
-
+aside{
     flex-grow: 1;
 
+
+
+}
+
+main{
+    width: 850px;
+    height: 680px;
+
+
+}
+
+
+/*tab*/
+
+
+.page{
+    position: relative;
+
+}
+
+
+.logo{
+    position: absolute;
+    border-radius: 0px 0px 8px 8px;
+    width: 59px;
+    height: 75px;
+    background-color: #110D16;
+    margin-left: 36px;
+
+}
+
+.logo > span{
+    display: flex;
+    font-size: 17px;
+    color: #fff;
+    justify-content: center;
+    padding-top: 35px;
+}
+
+.title{
+    position: absolute;
+    color: #110D16;
+    font-size: 35px;
+    margin-left: 110px;
+    font-weight: 900;
 
 }
 
 /*aside*/
-.page > aside{
+aside{
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    position: relative;
+
+
+}
+
+aside::before{
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: 0;
+    filter: blur(70px);
+    background: rgba(1, 6, 29, 0.4);
+    overflow: hidden;
+    margin: -30px;
+
 }
 
 
-.page > aside > .newsong{
+.newsong{
     padding: 10px;
     text-align:  center;
-    background: yellow;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(194,194,194,.9);
+    font-size: 18px ;
+    z-index: 1;
+
+
 
 }
 
-.page > aside > .newsong.active{
-    background: #ffcd36;
-    box-shadow: 0px 0px 5px black;
-}
+
 
 #songList-container{
     flex-grow: 1;
+    z-index: 1;
+    font-size: 16px;
+
+
 }
 
 
 .songList{
-    border-top: 1px solid #888;
+    border-top: 1px solid #ddd;
     text-align: left;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(194,194,194,.9);
+
 
 
 
@@ -100,7 +178,7 @@ body{
 }
 .songList > li{
     padding: 10px;
-    border: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 
 }
 
@@ -110,76 +188,123 @@ body{
 
 
 
-.clickable{
-    padding: 10px ;
-    cursor: pointer;
 
-}
-
-.draggable{
-    text-align: center;
-    padding: 30px ;
-    border-radius: 4px;
-    border: 3px dashed grey;
-
-}
 
 /*main*/
 
-.form{
-    font-size: 16px;
-
-
-
-}
-
-.form > .row{
-    margin: 10px 0;
-    display: flex;
-}
-
-
-
-.form > .row > label{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 5em;
-    text-align: right;
-    margin-right: 5px;
-}
-
-.form > .row.actions{
-    margin-left: calc(5em + 149px);
-}
-
-.form input[type=text]{
-    padding: 3px 8px;
-    border-radiust: 5px;
-    border: 2px #ddd solid;
-    height: 30px;
-}
-.form input[type=button],
-.form input[type=submit],
-.form button{
-    height: 30px;
-    padding-left: 10px;
-    padding-right: 10px;
-    border-radius: 5px;
-}
-
-.page > main{
+main{
     display: flex;
     align-items: center;
 
     flex-direction: column;
-    padding-top: 50px;
-    background: #d4d4d4;
+    padding-top: 123px;
+
     padding-left: 20px;
+}
+
+.form{
+    font-size: 20px;
+
+
 
 }
 
-.page >main > .form{
+.xxx{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 450px;
+    height: 300px;
+    background: rgba(0,0,0,0.4);
 
 }
 
+
+.row{
+    margin: 25px 0;
+    display: flex;
+}
+
+
+
+
+
+.form > .row.actions{
+
+}
+
+input[type=text]{
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+    width: 250px;
+    height: 40px;
+    border: 2px black solid;
+    border-radius: 8px;
+}
+input[type=button],
+input[type=submit],
+button{
+    height: 40px;
+    color: #fff;
+    border: 0;
+    font-size: 18px;
+    outline: none;
+    padding: 0px 50px;
+    background: #3C3D3E;
+    border-radius: 4px;
+    text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+    box-shadow: 0 4px 0 #5F6063, 0 3px 20px rgba(0,0,0,0.3);
+}
+
+/*uploadArea*/
+
+
+.uploadArea{
+    display: flex;
+    flex-grow: 1;
+
+}
+
+.clickable{
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px ;
+    cursor: pointer;
+    background-color: rgba(46,44,49,0.9);
+    font-size: 16px;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(194,194,194,.9);
+    box-shadow: inset -1px -1px 48px -12px rgba(0,0,0,0.75);
+
+}
+
+.draggable-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,.8);
+    width: 850px;
+    text-align: center;
+    padding: 30px;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(194,194,194,.9);
+
+
+}
+
+.draggable{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px rgba(200,200,200,.9) dashed;
+    width: 780px;
+    height: 80px;
+    box-shadow: 0 0 3px rgba(194,194,194,.9);;
+
+
+}

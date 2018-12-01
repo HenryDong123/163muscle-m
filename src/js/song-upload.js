@@ -2,12 +2,17 @@
     let view = {
         el: '.uploadArea',
         template: `
-             <div class="draggable" id="uploadContainer">
-                <div class="clickable" id="uploadButton">
-                    <p>点击或者拖曳文件</p>
-                    <p>大小限制：40MB</p>
+           <div class="draggable-wrapper"  id="uploadContainer">
+                <div class="draggable">
+                    <p>拖曳至此处上传</p>
                 </div>
+            </div>
 
+            <div class="clickable" id="uploadButton">
+
+                <div>
+                    <p>点击选择文件  >></p>
+                </div>
             </div>
         `,
         render(data) {

@@ -2,9 +2,9 @@
     let view = {
         el: '#songList-container',
         template: `
-             <ul class="songList">
-                
-            </ul>
+              <ul class="songList">
+                  
+                </ul>
         `,
         render(data) {
             let $el = $(this.el)

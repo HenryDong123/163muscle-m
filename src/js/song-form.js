@@ -1,34 +1,32 @@
 {
     let view = {
-        el: '.page > main',
+        el: '#main',
         init() {
             this.$el = $(this.el)
         },
         template: `
-           
             <form action="" class="form">
+                <div class="xxx">
                 <div class="row">
-                    <label>
-                        歌名
-                    </label>
-                    <input name="name" type="text" value="__name__">
+
+                    <input name="name" type="text" value="__name__" placeholder="歌名">
                 </div>
                 <div class="row">
-                    <label>
-                        歌手
-                    </label>
-                    <input name="artist" value="__artist__" type="text" >
+
+                    <input name="artist" value="__artist__" type="text" placeholder="歌手">
                 </div>
                 <div class="row">
-                    <label>
-                        外链
-                    </label>
-                    <input  name="url" type="text" value="__url__">
+
+                    <input  name="url" type="text" value="__url__" placeholder="外链">
                 </div>
                 <div class="row actions">
-                   <button type="submit">提交</button>
+                    <button type="submit">提交</button>
+                </div>
                 </div>
             </form>
+            
+           
+       
     `,
         render(data = {}) {
             let placeholders = ['name', 'url', 'artist', 'id']
