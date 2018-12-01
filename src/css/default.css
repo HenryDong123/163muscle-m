@@ -23,7 +23,7 @@ body{
 
 body{
     height: 100vh;
-    border: red solid 2px;
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -111,10 +111,12 @@ main{
 
 .title{
     position: absolute;
-    color: #110D16;
+
     font-size: 35px;
     margin-left: 110px;
     font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0px 15px rgba(0,0,0,1);
 
 }
 
@@ -145,12 +147,17 @@ aside::before{
     padding: 10px;
     text-align:  center;
     color: #ffffff;
-    text-shadow: 0 0 10px rgba(194,194,194,.9);
+    text-shadow: 0 0 10px rgba(194,194,194,.2);
     font-size: 18px ;
     z-index: 1;
+    cursor: pointer;
 
 
 
+}
+
+.newsong:hover{
+    text-shadow: 0 0 10px rgba(210,210,210,.9);
 }
 
 
@@ -179,11 +186,14 @@ aside::before{
 .songList > li{
     padding: 10px;
     border-bottom: 1px solid #ddd;
+    cursor: pointer;
 
 }
 
+
+
 .songList > li.active{
-    background: #d4d4d4;
+    background: rgba(0,0,0,.3);
 }
 
 
@@ -204,10 +214,33 @@ main{
 
 .form{
     font-size: 20px;
+    position: relative;
+
 
 
 
 }
+
+.deleteBtn{
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: url("../img/dbtn2.png")no-repeat;
+    margin-left: 210px;
+    background-size: 18px 18px;
+    margin-top: -165px;
+    cursor: pointer;
+
+
+}
+
+.deleteBtn:hover{
+    width: 23px;
+    height: 23px;
+    background-size: 23px 23px;
+}
+
+
 
 .xxx{
 
@@ -215,12 +248,19 @@ main{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
     width: 450px;
-    height: 300px;
-    background: rgba(0,0,0,0.4);
+    height: 360px;
+    background: rgba(0,0,0,0.25);
 
 }
 
+.formTitle{
+    font-size: 28px;
+    margin-top: 10px;
+    color: #fff;
+    text-shadow: 0 0px 15px rgba(0,0,0,1);
+}
 
 .row{
     margin: 25px 0;
@@ -236,17 +276,38 @@ main{
 }
 
 input[type=text]{
+    background: rgba(0,0,0,.3);;
     padding-left: 10px;
     padding-right: 10px;
     margin-left: 10px;
     width: 250px;
     height: 40px;
-    border: 2px black solid;
+    outline: none;
     border-radius: 8px;
+    color: #fff;
+    box-shadow: 0px 0px 2px rgba(194,194,194,.2);
+
+
 }
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    rgba(250,250,250,.8);
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    rgba(250,250,250,.8);
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:   rgba(250,250,250,.8);
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    rgba(250,250,250,.8);
+}
+
+
 input[type=button],
 input[type=submit],
 button{
+    cursor: pointer;
     height: 40px;
     color: #fff;
     border: 0;
@@ -278,8 +339,14 @@ button{
     background-color: rgba(46,44,49,0.9);
     font-size: 16px;
     color: #fff;
-    text-shadow: 0 0 10px rgba(194,194,194,.9);
+    text-shadow: 0 0 10px rgba(194,194,194,.3);
     box-shadow: inset -1px -1px 48px -12px rgba(0,0,0,0.75);
+
+}
+
+.clickable:hover{
+
+    text-shadow: 0 0 10px rgba(210,210,210,.9);
 
 }
 

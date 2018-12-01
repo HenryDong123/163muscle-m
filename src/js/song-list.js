@@ -89,7 +89,7 @@
             window.eventHub.on('update', (Music) => {
 
                 let music = this.model.data.music
-
+                debugger
 
                 for (let i = 0; i < music.length; i++) {
                     if (music[i].id === Music.id) {
@@ -98,6 +98,19 @@
 
                 }
                 this.view.render(this.model.data)
+
+            })
+
+            window.eventHub.on('delete',(Music) =>{
+                console.log(Music)
+
+                let music = this.model.data.music
+                for (let i = 0; i < music.length; i++) {
+                    if (music[i].id === Music.id) {
+                        this.getALlMusic()
+                    }
+
+                }
 
             })
 
@@ -126,6 +139,10 @@
                 let newData = JSON.parse(copy)
                 window.eventHub.emit('select', newData)
                 //防止改动内存后造成的bug，使用深拷贝
+
+
+
+
 
             })
 

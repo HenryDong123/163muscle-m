@@ -7,6 +7,9 @@
         template: `
             <form action="" class="form">
                 <div class="xxx">
+                <div class="deleteBtn">
+                
+                </div>
                 <div class="row">
 
                     <input name="name" type="text" value="__name__" placeholder="歌名">
@@ -36,9 +39,9 @@
             })
             $(this.el).html(html)
             if (!data.id) {
-                $(this.el).prepend('<h1>新建歌曲</h1>')
+                $(this.el).find('.xxx').prepend('<p class="formTitle">新建歌曲</p>')
             } else {
-                $(this.el).prepend('<h1>编辑歌曲</h1>')
+                $(this.el).find('.xxx').prepend('<p class="formTitle">编辑歌曲</p>')
             }
         },
         reset() {
@@ -85,7 +88,19 @@
                 Object.assign(this.data, data)
                 return response
             })
+        },
+
+        delete(data){
+            var music = AV.Object.createWithoutData('Music', this.data.id);
+            return music.destroy().then((response)=>{
+                console.log('re')
+                console.log(data)
+                Object.assign(this.data, data)
+                return response
+            })
         }
+
+
 
 
     }
@@ -144,10 +159,23 @@
 
             this.model.update(data)
                 .then(() => {
-                    
                     window.eventHub.emit('update', JSON.parse(JSON.stringify(this.model.data)))
                 })
 
+        },
+
+        musicDelete(){
+            let needs = 'name artist url'.split(' ')
+            let data = {}
+            needs.map((string) => {
+                data[string] = this.view.$el.find(`[name="${string}"]`).val()
+            })
+
+            this.model.delete(data)
+                .then(() => {
+
+                    window.eventHub.emit('delete', JSON.parse(JSON.stringify(this.model.data)))
+                })
         },
 
         bindEvents() {
@@ -159,6 +187,16 @@
 
                 } else {
                     this.musicSave()
+
+                }
+
+
+            })
+
+            this.view.$el.on('click', '.deleteBtn', () => {
+
+                if (this.model.data.id) {
+                    this.musicDelete()
 
                 }
 
