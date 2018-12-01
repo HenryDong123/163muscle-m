@@ -89,7 +89,7 @@
             window.eventHub.on('update', (Music) => {
 
                 let music = this.model.data.music
-                debugger
+                
 
                 for (let i = 0; i < music.length; i++) {
                     if (music[i].id === Music.id) {
