@@ -32,7 +32,6 @@ body{
 
 
 
-
 /*layout*/
 .page-wrapper{
     width: 1106px;
@@ -143,22 +142,16 @@ aside::before{
 }
 
 
-.newsong{
+.listTitle{
     padding: 10px;
     text-align:  center;
     color: #ffffff;
     text-shadow: 0 0 10px rgba(194,194,194,.2);
     font-size: 18px ;
     z-index: 1;
-    cursor: pointer;
-
-
-
 }
 
-.newsong:hover{
-    text-shadow: 0 0 10px rgba(210,210,210,.9);
-}
+
 
 
 
@@ -212,33 +205,6 @@ main{
     padding-left: 20px;
 }
 
-.form{
-    font-size: 20px;
-    position: relative;
-
-
-
-
-}
-
-.deleteBtn{
-    position: absolute;
-    width: 18px;
-    height: 18px;
-    background: url("../img/dbtn2.png")no-repeat;
-    margin-left: 210px;
-    background-size: 18px 18px;
-    margin-top: -165px;
-    cursor: pointer;
-
-
-}
-
-.deleteBtn:hover{
-    width: 23px;
-    height: 23px;
-    background-size: 23px 23px;
-}
 
 
 
@@ -255,80 +221,109 @@ main{
 
 }
 
-.formTitle{
-    font-size: 28px;
-    margin-top: 10px;
-    color: #fff;
-    text-shadow: 0 0px 15px rgba(0,0,0,1);
-}
-
-.row{
-    margin: 25px 0;
-    display: flex;
-}
 
 
 
 
 
-.form > .row.actions{
-
-}
-
-input[type=text]{
-    background: rgba(0,0,0,.3);;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left: 10px;
-    width: 250px;
-    height: 40px;
-    outline: none;
-    border-radius: 8px;
-    color: #fff;
-    box-shadow: 0px 0px 2px rgba(194,194,194,.2);
 
 
-}
-
-::-webkit-input-placeholder { /* WebKit browsers */
-    color:    rgba(250,250,250,.8);
-}
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:    rgba(250,250,250,.8);
-}
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color:   rgba(250,250,250,.8);
-}
-:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color:    rgba(250,250,250,.8);
-}
 
 
-input[type=button],
-input[type=submit],
-button{
-    cursor: pointer;
-    height: 40px;
-    color: #fff;
-    border: 0;
-    font-size: 18px;
-    outline: none;
-    padding: 0px 50px;
-    background: #3C3D3E;
-    border-radius: 4px;
-    text-shadow: 0 -1px 0 rgba(0,0,0,.3);
-    box-shadow: 0 4px 0 #5F6063, 0 3px 20px rgba(0,0,0,0.3);
-}
 
-/*uploadArea*/
+/*player*/
 
-
-.uploadArea{
+.playArea{
     display: flex;
     flex-grow: 1;
 
 }
 
+
+.player-wrapper {
+    display: flex;
+    background-color: rgba(0, 0, 0, .8);
+    justify-content: center;
+    align-items: center;
+    width: 850px;
+    padding: 30px;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(194, 194, 194, .9);
+
+
+}
+
+.controls{
+
+}
+.playButton{
+    position: relative;
+}
+
+.playButton.active{
+    visibility: hidden;
+}
+
+.pauseButton{
+    visibility: hidden;
+    position: absolute;
+    top: 558px;
+    left: 32px;
+}
+.pauseButton.active{
+    visibility: visible;
+}
+
+.Audio{
+    margin-left: 35px;
+    width: 90%;
+
+}
+
+.icon {
+    width: 3em;
+    height: 3em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+    z-index: 6;
+}
+
+.pgs {
+    width: 650px;
+    background-color: #2b2b2b;
+    position: relative;
+    overflow: hidden;
+    height: 3px;
+}
+
+.pgs-play {
+    position: absolute;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0px 0px 25px rgba(250,250,250,0.5);
+
+}
+
+.playbar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.playbar > span{
+    margin: 0 5px;
+}
+
+
+
+
+
+
+
+
+/******************/
 .clickable{
     flex-grow: 1;
     display: flex;
@@ -342,36 +337,11 @@ button{
     text-shadow: 0 0 10px rgba(194,194,194,.3);
     box-shadow: inset -1px -1px 48px -12px rgba(0,0,0,0.75);
 
-}
-
-.clickable:hover{
-
-    text-shadow: 0 0 10px rgba(210,210,210,.9);
 
 }
 
-.draggable-wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0,0,0,.8);
-    width: 850px;
-    text-align: center;
-    padding: 30px;
-    color: #ffffff;
-    text-shadow: 0 0 10px rgba(194,194,194,.9);
+.clickable:hover {
 
-
-}
-
-.draggable{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px rgba(200,200,200,.9) dashed;
-    width: 780px;
-    height: 80px;
-    box-shadow: 0 0 3px rgba(194,194,194,.9);;
-
+    text-shadow: 0 0 10px rgba(210, 210, 210, .9);
 
 }

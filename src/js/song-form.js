@@ -20,7 +20,11 @@
                 </div>
                 <div class="row">
 
-                    <input  name="url" type="text" value="__url__" placeholder="外链">
+                    <input  name="url" type="text" value="__url__" placeholder="歌曲外链">
+                </div>
+                <div class="row">
+
+                    <input  name="cover" type="text" value="__cover__" placeholder="封面链接">
                 </div>
                 <div class="row actions">
                     <button type="submit">提交</button>
@@ -32,7 +36,7 @@
        
     `,
         render(data = {}) {
-            let placeholders = ['name', 'url', 'artist', 'id']
+            let placeholders = ['name', 'url', 'artist', 'id' ,'cover']
             let html = this.template
             placeholders.map((string) => {
                 html = html.replace(`__${string}__`, data[string] || '')
@@ -52,7 +56,7 @@
 
     let model = {
         data: {
-            name: '', artist: '', url: '', id: ''
+            name: '', artist: '', url: '', id: '', cover:''
         },
         create(data) {
             // 声明类型
@@ -63,6 +67,7 @@
             music.set('name', data.name)
             music.set('artist', data.artist)
             music.set('url', data.url)
+            music.set('cover', data.cover)
             // 设置优先级
             return music.save().then((newMusic) => {
                 let {id, attributes} = newMusic
@@ -83,6 +88,7 @@
             music.set('name', data.name)
             music.set('artist', data.artist)
             music.set('url', data.url)
+            music.set('cover', data.cover)
             // 保存到云端
             return music.save().then((response) => {
                 Object.assign(this.data, data)
@@ -121,7 +127,7 @@
 
                 if (this.model.data.id) {
                     this.model.data = {
-                        name: '', url: '', id: '', artist: ''
+                        name: '', url: '', id: '', artist: '', cover: ''
                     }
                 } else {
                     Object.assign(this.model.data, data)
@@ -133,7 +139,7 @@
 
         },
         musicSave() {
-            let needs = 'name artist url'.split(' ')
+            let needs = 'name artist url cover'.split(' ')
             let data = {}
             needs.map((string) => {
                 data[string] = this.view.$el.find(`[name="${string}"]`).val()
@@ -151,7 +157,7 @@
         },
 
         musicUpdate() {
-            let needs = 'name artist url'.split(' ')
+            let needs = 'name artist url cover'.split(' ')
             let data = {}
             needs.map((string) => {
                 data[string] = this.view.$el.find(`[name="${string}"]`).val()
@@ -159,13 +165,14 @@
 
             this.model.update(data)
                 .then(() => {
+                    this.view.reset()
                     window.eventHub.emit('update', JSON.parse(JSON.stringify(this.model.data)))
                 })
 
         },
 
         musicDelete(){
-            let needs = 'name artist url'.split(' ')
+            let needs = 'name artist url cover'.split(' ')
             let data = {}
             needs.map((string) => {
                 data[string] = this.view.$el.find(`[name="${string}"]`).val()
@@ -173,7 +180,7 @@
 
             this.model.delete(data)
                 .then(() => {
-
+                    this.view.reset()
                     window.eventHub.emit('delete', JSON.parse(JSON.stringify(this.model.data)))
                 })
         },
@@ -189,6 +196,8 @@
                     this.musicSave()
 
                 }
+
+
 
 
             })
